@@ -14,6 +14,9 @@
 		BC6920862131C35900DDDB03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC6920852131C35900DDDB03 /* Assets.xcassets */; };
 		BC6920892131C35900DDDB03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC6920872131C35900DDDB03 /* LaunchScreen.storyboard */; };
 		BC6920942131C35900DDDB03 /* W2DCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6920932131C35900DDDB03 /* W2DCTests.swift */; };
+		BC69209F2131C69100DDDB03 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC69209E2131C69100DDDB03 /* VideoModel.swift */; };
+		BC6920A12131C93200DDDB03 /* VideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6920A02131C93200DDDB03 /* VideoViewModel.swift */; };
+		BC6920A32131CD6F00DDDB03 /* DataFromJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6920A22131CD6F00DDDB03 /* DataFromJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,9 @@
 		BC69208F2131C35900DDDB03 /* W2DCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = W2DCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC6920932131C35900DDDB03 /* W2DCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = W2DCTests.swift; sourceTree = "<group>"; };
 		BC6920952131C35900DDDB03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC69209E2131C69100DDDB03 /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
+		BC6920A02131C93200DDDB03 /* VideoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewModel.swift; sourceTree = "<group>"; };
+		BC6920A22131CD6F00DDDB03 /* DataFromJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFromJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +87,9 @@
 			children = (
 				BC69207B2131C35900DDDB03 /* AppDelegate.swift */,
 				BC69207D2131C35900DDDB03 /* ViewController.swift */,
+				BC69209E2131C69100DDDB03 /* VideoModel.swift */,
+				BC6920A02131C93200DDDB03 /* VideoViewModel.swift */,
+				BC6920A22131CD6F00DDDB03 /* DataFromJSON.swift */,
 				BC69207F2131C35900DDDB03 /* Main.storyboard */,
 				BC6920852131C35900DDDB03 /* Assets.xcassets */,
 				BC6920872131C35900DDDB03 /* LaunchScreen.storyboard */,
@@ -201,8 +210,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC69207E2131C35900DDDB03 /* ViewController.swift in Sources */,
+				BC6920A32131CD6F00DDDB03 /* DataFromJSON.swift in Sources */,
 				BC69207C2131C35900DDDB03 /* AppDelegate.swift in Sources */,
 				BC6920842131C35900DDDB03 /* W2DC.xcdatamodeld in Sources */,
+				BC6920A12131C93200DDDB03 /* VideoViewModel.swift in Sources */,
+				BC69209F2131C69100DDDB03 /* VideoModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,8 +374,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S65CB7T6HU;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = W2DC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -371,6 +384,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.play.W2DC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -380,8 +394,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S65CB7T6HU;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = W2DC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -389,6 +404,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.play.W2DC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
