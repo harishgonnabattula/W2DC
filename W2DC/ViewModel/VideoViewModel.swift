@@ -17,14 +17,6 @@ enum DownloadStatus: String,Codable {
 struct VideoViewModel {
     
     fileprivate var video: VideoModel!
-    
-    var url: URL {
-        get {
-            return isDownloaded ? URL(fileURLWithPath: localPath!) : URL(string: video.urlString)!
-        }
-    }
-    var status = DownloadStatus.NotDownloaded
-    
     fileprivate var isDownloaded = false {
         didSet{
             status = isDownloaded ? .Completed : .NotDownloaded
@@ -32,34 +24,29 @@ struct VideoViewModel {
     }
     fileprivate var localPath:String?
     
+    var url: URL {
+        return isDownloaded ? URL(fileURLWithPath: localPath!) : URL(string: video.streamUrl!)!
+    }
+    var status = DownloadStatus.NotDownloaded
     var title: String {
-        get{
-            return video.title
-        }
+        return video.title
     }
     var summary: String {
-        get{
             return video.summary
-        }
     }
-    
+    var videoThumbnail: URL {
+        return URL(string:video.thumbnail!)!
+    }
     init(with video: VideoModel) {
         self.video = video
     }
-    
-    func getVideo() -> Data? {
-        do{
-            return try Data(contentsOf: url)
-        }
-        catch {
-            print("Error fetch video data")
-            return nil
-        }
-    }
-    
-    //MARK:- Future Release
-    
-//    func downloadVideo() {
+
+    //TODO: Function Skeletons
+//    func setVideoFavourite(value: Bool) {
+//        self.video.isFavourited = value
+//    }
+//
+//    func fetchVideoFromServer() {
 //
 //    }
 }

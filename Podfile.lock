@@ -1,0 +1,26 @@
+PODS:
+  - FaveButton (2.0.3)
+  - Kingfisher (4.9.0)
+  - NVActivityIndicatorView (4.3.0):
+    - NVActivityIndicatorView/Presenter (= 4.3.0)
+  - NVActivityIndicatorView/Presenter (4.3.0)
+
+DEPENDENCIES:
+  - FaveButton (~> 2.0.3)
+  - Kingfisher (~> 4.0)
+  - NVActivityIndicatorView
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - FaveButton
+    - Kingfisher
+    - NVActivityIndicatorView
+
+SPEC CHECKSUMS:
+  FaveButton: cfcbc5e73da159c4f916613da5687357b5bb4783
+  Kingfisher: 64539b51826b778206daa6ed815d12653caa69dd
+  NVActivityIndicatorView: 963f62bf9f993fcf23218e55958e5b1761b9504c
+
+PODFILE CHECKSUM: e6917ed1abb36fb7701739e6859d8f450725d806
+
+COCOAPODS: 1.5.3

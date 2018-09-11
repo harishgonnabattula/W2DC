@@ -10,12 +10,10 @@ import Foundation
 
 
 struct VideoModel: Codable {
-    
-    var urlString: String!
-    var title: String!
-    var summary: String!
-    
-    private init(){}
-    
-    
+    var downloadUrl: String?
+    var title: String
+    var summary: String
+    var streamUrl:String?
+    var thumbnail:String?
 }
+

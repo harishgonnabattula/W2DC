@@ -12,7 +12,7 @@ class DataFromJSON {
     
     static let shared = DataFromJSON()
     
-    lazy var videos: [VideoViewModel] = {
+    var videos: [VideoViewModel] = {
         do{
             let path = Bundle.main.path(forResource: "wwdc", ofType: "json")
             let fileURL = URL(fileURLWithPath: path!)
@@ -20,7 +20,9 @@ class DataFromJSON {
             let jsonDecoder = JSONDecoder()
             
             let model = try jsonDecoder.decode([VideoModel].self, from: jsonData)
-            return model.map({ (vmodel) -> VideoViewModel in
+            return model.filter({ (vid) -> Bool in
+                vid.streamUrl != nil
+            }).map({ (vmodel) -> VideoViewModel in
                 VideoViewModel(with: vmodel)
             })
         }
