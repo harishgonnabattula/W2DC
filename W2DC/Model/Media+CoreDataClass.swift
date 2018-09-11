@@ -29,7 +29,7 @@ public class Media: NSManagedObject, Codable {
     }
     public required convenience init(from decoder: Decoder) throws {
         guard let context = decoder.userInfo[CodingUserInfoKey.context!] as? NSManagedObjectContext else { fatalError() }
-        guard let entity = NSEntityDescription.entity(forEntityName: "Media", in: context) else { fatalError() }
+        guard let entity = NSEntityDescription.entity(forEntityName: "MediaModel", in: context) else { fatalError() }
         
         self.init(entity: entity, insertInto: context)
         

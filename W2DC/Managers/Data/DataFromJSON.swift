@@ -7,28 +7,27 @@
 //
 
 import Foundation
+import UIKit
+
 
 class DataFromJSON {
     
     static let shared = DataFromJSON()
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    var videos: [VideoViewModel] = {
+    func loadVideos() {
         do{
             let path = Bundle.main.path(forResource: "wwdc", ofType: "json")
             let fileURL = URL(fileURLWithPath: path!)
             let jsonData = try Data(contentsOf: fileURL)
+            let context = appDelegate.persistentContainer.newBackgroundContext()
             let jsonDecoder = JSONDecoder()
-            
-            let model = try jsonDecoder.decode([VideoModel].self, from: jsonData)
-            return model.filter({ (vid) -> Bool in
-                vid.streamUrl != nil
-            }).map({ (vmodel) -> VideoViewModel in
-                VideoViewModel(with: vmodel)
-            })
+            jsonDecoder.userInfo[CodingUserInfoKey.context!] = context
+            _ = try jsonDecoder.decode([Media].self, from: jsonData)
+            try context.save()
         }
         catch {
             print("Error")
-            return []
         }
-    }()
+    }
 }

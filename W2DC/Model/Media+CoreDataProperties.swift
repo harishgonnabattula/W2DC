@@ -13,7 +13,9 @@ import CoreData
 extension Media {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Media> {
-        return NSFetchRequest<Media>(entityName: "MediaModel")
+        let fetchRequest = NSFetchRequest<Media>(entityName: "MediaModel")
+        fetchRequest.predicate = NSPredicate(format: "streamUrl.length > 0")
+        return fetchRequest
     }
 
     @NSManaged public var downloadUrl: String?

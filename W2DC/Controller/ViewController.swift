@@ -11,19 +11,18 @@ import AVKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var videoTableView: UITableView!
-
-    private var dataSource = DataFromJSON.shared.videos
-    private var placeHolderDataSource = [VideoViewModel]()
+    let vmModel = VideoViewModel()
+    private var dataSource = [VideoViewModel]()
     private var expandCellAtIndex = [Bool]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        dataSource = vmModel.mediaItems()
         initializeSearchController()
         videoTableView.estimatedRowHeight = 250
         videoTableView.tableFooterView = UIView()
         expandCellAtIndex = (0...dataSource.count).map({ (val) -> Bool in
             false
         })
-        placeHolderDataSource = dataSource
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,6 +55,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "video", for: indexPath) as! VideoTableViewCell
         if(expandCellAtIndex[indexPath.row]) {
+            
             cell.summaryLabel.numberOfLines = 0
             cell.summaryLabel.lineBreakMode = .byWordWrapping
         }
@@ -63,6 +63,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             cell.summaryLabel.numberOfLines = 2
             cell.summaryLabel.lineBreakMode = .byTruncatingTail
         }
+        
         cell.configureCell(withURL: dataSource[indexPath.row].url, thumbnail: dataSource[indexPath.row].videoThumbnail, description: dataSource[indexPath.row].summary)
         cell.contentView.setCardView(view: cell.thumbnailImage)
         
@@ -102,14 +103,7 @@ extension ViewController: FullScreenVideoDelegate {
 
 extension ViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        if(searchController.searchBar.text == ""){
-            dataSource = placeHolderDataSource
-        }
-        else{
-            dataSource = placeHolderDataSource.filter { (vm) -> Bool in
-                vm.title.contains(searchController.searchBar.text!)
-            }
-        }
+        dataSource = vmModel.filterItems(with: searchController.searchBar.text!)
         videoTableView.reloadData()
     }
 }

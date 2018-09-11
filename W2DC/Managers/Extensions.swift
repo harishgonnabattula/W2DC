@@ -40,15 +40,21 @@ extension UILabel {
         if self.numberOfLines == 2 {
             let h = self.text?.height(withConstrainedWidth: self.frame.size.width, font: self.font)
             let warray = lines.split(separator: " ")
-            let lines = h!/self.font.pointSize
-            let wordsperLine = warray.count/Int(lines)
+            let line = Int(h!/self.font.pointSize)
+            let wordsperLine = warray.count/line
             var tempString=""
-            for i in 0...wordsperLine*2{
-                tempString.append(" "+String(warray[i]))
+            if(line>1){
+                for i in 0...wordsperLine*2{
+                    tempString.append(" "+String(warray[i]))
+                }
+                let mutableString = NSMutableAttributedString(string: tempString)
+                mutableString.append(NSAttributedString(string: "...more", attributes: [NSAttributedStringKey.foregroundColor : UIColor.blue]))
+                self.attributedText = mutableString
             }
-            let mutableString = NSMutableAttributedString(string: tempString)
-            mutableString.append(NSAttributedString(string: "...more", attributes: [NSAttributedStringKey.foregroundColor : UIColor.blue]))
-            self.attributedText = mutableString
+            else
+            {
+                self.text = lines
+            }
         }
     }
 }
