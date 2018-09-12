@@ -25,7 +25,6 @@ struct VideoViewModel {
         }
     }
     fileprivate var localPath:String?
-    fileprivate let fetchResultsController = (UIApplication.shared.delegate as! AppDelegate).fetchedResultsController
     var url: URL {
         return isDownloaded ? URL(fileURLWithPath: localPath!) : URL(string: video.streamUrl!)!
     }
@@ -39,44 +38,14 @@ struct VideoViewModel {
     var videoThumbnail: URL {
         return URL(string:video.thumbnail!)!
     }
-    private init(with video: Media) {
+    var isFavourite: Bool {
+        return video.favourite
+    }
+    var objectId: NSManagedObjectID {
+        return video.objectID
+    }
+    init(with video: Media) {
         self.video = video
-    }
-    
-    init() {}
-    
-    func mediaItems() -> [VideoViewModel] {
-        do{
-            try fetchResultsController.performFetch()
-            if fetchResultsController.fetchedObjects!.count == 0 {
-                DataFromJSON.shared.loadVideos()
-                try fetchResultsController.performFetch()
-            }
-            return fetchResultsController.fetchedObjects!.map({ (media) -> VideoViewModel in
-                VideoViewModel(with: media)
-            })
-        }
-        catch _ {
-            print("Error performing fetch")
-            return []
-        }
-    }
-    
-    func filterItems(with query:String) -> [VideoViewModel] {
-        if(query != "")
-        {
-            self.fetchResultsController.fetchRequest.predicate = NSPredicate(format: "title CONTAINS[cd] %@",query)
-        }
-        do {
-            try self.fetchResultsController.performFetch()
-            return fetchResultsController.fetchedObjects!.map({ (media) -> VideoViewModel in
-                VideoViewModel(with: media)
-            })
-        }
-        catch _ {
-            print("Error")
-            return []
-        }
     }
 }
 

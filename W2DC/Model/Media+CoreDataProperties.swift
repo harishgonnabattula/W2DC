@@ -23,5 +23,6 @@ extension Media {
     @NSManaged public var summary: String?
     @NSManaged public var thumbnail: String?
     @NSManaged public var title: String?
+    @NSManaged public var favourite: Bool
 
 }

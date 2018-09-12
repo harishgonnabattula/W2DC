@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8B928ED9B8CFAFF38002CF8C /* Pods_W2DCTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94724604D13EB6D41564CB4D /* Pods_W2DCTests.framework */; };
-		BC173EA02142085D00C81F46 /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC173E9F2142085D00C81F46 /* AuthenticationController.swift */; };
 		BC2D03C42141B20400C71C53 /* wwdc.json in Resources */ = {isa = PBXBuildFile; fileRef = BC2D03C32141B20400C71C53 /* wwdc.json */; };
 		BC69207C2131C35900DDDB03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC69207B2131C35900DDDB03 /* AppDelegate.swift */; };
 		BC69207E2131C35900DDDB03 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC69207D2131C35900DDDB03 /* ViewController.swift */; };
@@ -27,6 +26,7 @@
 		BCC2E27321414CAA003687DE /* 84631.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BCC2E27221414CAA003687DE /* 84631.jpg */; };
 		BCDF063F2146EBAB0024BA95 /* MediaPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDF063E2146EBAB0024BA95 /* MediaPlayer.swift */; };
 		BCDF0641214702EC0024BA95 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDF0640214702EC0024BA95 /* Extensions.swift */; };
+		BCF1BF392149C368007F7BBE /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF1BF382149C368007F7BBE /* DataManager.swift */; };
 		EF114E8ED8C09594BB2ECDB6 /* Pods_W2DC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C788D1C94889A53C4376528 /* Pods_W2DC.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,7 +47,6 @@
 		957041959917CDE08F9770C0 /* Pods-W2DC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-W2DC.release.xcconfig"; path = "Pods/Target Support Files/Pods-W2DC/Pods-W2DC.release.xcconfig"; sourceTree = "<group>"; };
 		AF19606905D8FC4ACE7AD384 /* Pods-W2DCTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-W2DCTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-W2DCTests/Pods-W2DCTests.release.xcconfig"; sourceTree = "<group>"; };
 		B7B0EF1BFB70FB3CB96C1C75 /* Pods-W2DC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-W2DC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-W2DC/Pods-W2DC.debug.xcconfig"; sourceTree = "<group>"; };
-		BC173E9F2142085D00C81F46 /* AuthenticationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationController.swift; sourceTree = "<group>"; };
 		BC2D03C32141B20400C71C53 /* wwdc.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = wwdc.json; sourceTree = "<group>"; };
 		BC6920782131C35900DDDB03 /* W2DC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = W2DC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC69207B2131C35900DDDB03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +69,7 @@
 		BCC2E27221414CAA003687DE /* 84631.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 84631.jpg; sourceTree = "<group>"; };
 		BCDF063E2146EBAB0024BA95 /* MediaPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPlayer.swift; sourceTree = "<group>"; };
 		BCDF0640214702EC0024BA95 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		BCF1BF382149C368007F7BBE /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +105,6 @@
 			isa = PBXGroup;
 			children = (
 				BC69207D2131C35900DDDB03 /* ViewController.swift */,
-				BC173E9F2142085D00C81F46 /* AuthenticationController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -145,7 +144,7 @@
 				BCDF063D2146EB720024BA95 /* Media */,
 				BC173E9D2142057100C81F46 /* Data */,
 				BC173E9C2142056B00C81F46 /* Network */,
-				BCDF0640214702EC0024BA95 /* Extensions.swift */,
+				BCF1BF3A2149D0F9007F7BBE /* Extensions */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -162,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				BC6920A22131CD6F00DDDB03 /* DataFromJSON.swift */,
+				BCF1BF382149C368007F7BBE /* DataManager.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -226,6 +226,14 @@
 				BCDF063E2146EBAB0024BA95 /* MediaPlayer.swift */,
 			);
 			path = Media;
+			sourceTree = "<group>";
+		};
+		BCF1BF3A2149D0F9007F7BBE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BCDF0640214702EC0024BA95 /* Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		CCBAD83B4CF6F2C82E9A5F70 /* Pods */ = {
@@ -406,9 +414,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC173EA02142085D00C81F46 /* AuthenticationController.swift in Sources */,
 				BC69207E2131C35900DDDB03 /* ViewController.swift in Sources */,
 				BC6920A32131CD6F00DDDB03 /* DataFromJSON.swift in Sources */,
+				BCF1BF392149C368007F7BBE /* DataManager.swift in Sources */,
 				BC69207C2131C35900DDDB03 /* AppDelegate.swift in Sources */,
 				BC6920842131C35900DDDB03 /* W2DC.xcdatamodeld in Sources */,
 				BC6920A12131C93200DDDB03 /* VideoViewModel.swift in Sources */,

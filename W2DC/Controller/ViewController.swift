@@ -8,15 +8,16 @@
 
 import UIKit
 import AVKit
+import CoreData
 
 class ViewController: UIViewController {
     @IBOutlet weak var videoTableView: UITableView!
-    let vmModel = VideoViewModel()
+    let dManager = DataManager.shared
     private var dataSource = [VideoViewModel]()
     private var expandCellAtIndex = [Bool]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        dataSource = vmModel.mediaItems()
+        dataSource = dManager.mediaItems()
         initializeSearchController()
         videoTableView.estimatedRowHeight = 250
         videoTableView.tableFooterView = UIView()
@@ -36,6 +37,9 @@ class ViewController: UIViewController {
         searchController.dimsBackgroundDuringPresentation = true
         searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = "Ex: Core Data"
+        searchController.searchBar.selectedScopeButtonIndex = -1
+        searchController.searchBar.scopeButtonTitles = ["Favourite","Downloaded"]
+        searchController.searchBar.tintColor = UIColor(hexString: "#F67280")
         searchController.hidesNavigationBarDuringPresentation = false
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -64,7 +68,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             cell.summaryLabel.lineBreakMode = .byTruncatingTail
         }
         
-        cell.configureCell(withURL: dataSource[indexPath.row].url, thumbnail: dataSource[indexPath.row].videoThumbnail, description: dataSource[indexPath.row].summary)
+        cell.configureCell(withURL: dataSource[indexPath.row].url, thumbnail: dataSource[indexPath.row].videoThumbnail, description: dataSource[indexPath.row].summary, id: dataSource[indexPath.row].objectId)
+        cell.favouriteButton.isSelected = dataSource[indexPath.row].isFavourite
         cell.contentView.setCardView(view: cell.thumbnailImage)
         
         cell.fullScreenDelegate = self
@@ -103,7 +108,13 @@ extension ViewController: FullScreenVideoDelegate {
 
 extension ViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        dataSource = vmModel.filterItems(with: searchController.searchBar.text!)
+        dataSource = dManager.filterItems(with: searchController.searchBar.text!)
         videoTableView.reloadData()
+    }
+}
+
+extension ViewController: NSFetchedResultsControllerDelegate{
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        print("Content Changed")
     }
 }

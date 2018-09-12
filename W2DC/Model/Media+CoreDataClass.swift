@@ -19,6 +19,7 @@ public class Media: NSManagedObject, Codable {
         try container.encode(thumbnail, forKey: .thumbnail)
         try container.encode(title, forKey: .title)
         try container.encode(summary, forKey: .summary)
+        try container.encode(favourite, forKey: .favourite)
     }
     enum CodingKeys:String,CodingKey {
         case downloadUrl
@@ -26,6 +27,7 @@ public class Media: NSManagedObject, Codable {
         case thumbnail
         case title
         case summary
+        case favourite
     }
     public required convenience init(from decoder: Decoder) throws {
         guard let context = decoder.userInfo[CodingUserInfoKey.context!] as? NSManagedObjectContext else { fatalError() }

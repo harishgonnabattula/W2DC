@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--W2DC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="W2DC" customModuleProvider="target" sceneMemberID="viewController">
@@ -62,6 +62,9 @@
                                                         <constraint firstAttribute="height" constant="30" id="OW8-ql-Fo3"/>
                                                     </constraints>
                                                     <state key="normal" image="heart"/>
+                                                    <connections>
+                                                        <action selector="setFavourite:" destination="gFY-i8-6Jz" eventType="touchUpInside" id="FWx-iB-04R"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -79,6 +82,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="favouriteButton" destination="PbB-zx-e94" id="ihS-Pf-47t"/>
                                             <outlet property="summaryLabel" destination="h4O-n5-0cI" id="FgJ-29-3Sy"/>
                                             <outlet property="thumbnailImage" destination="XJM-y1-160" id="c39-W0-KMk"/>
                                             <outlet property="timeLabel" destination="8Qv-2t-90C" id="CMF-jv-qeD"/>
@@ -100,14 +104,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Hn1-ci-52g"/>
+                    <navigationItem key="navigationItem" title="W2DC" id="Hn1-ci-52g"/>
                     <connections>
                         <outlet property="videoTableView" destination="0U2-dT-5yD" id="7DG-lO-unP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1076" y="132.68365817091455"/>
+            <point key="canvasLocation" x="1225" y="133"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uOu-QW-hkP">

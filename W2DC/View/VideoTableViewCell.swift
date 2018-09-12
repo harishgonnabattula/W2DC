@@ -9,6 +9,8 @@
 import UIKit
 import AVKit
 import Kingfisher
+import FaveButton
+import CoreData
 
 protocol FullScreenVideoDelegate:class {
     func presentVideoInFullScreen(player:AVPlayer);
@@ -16,14 +18,17 @@ protocol FullScreenVideoDelegate:class {
 }
 class VideoTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var favouriteButton: FaveButton!
     @IBOutlet weak var thumbnailImage: UIImageView!
     @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    
     weak var fullScreenDelegate:FullScreenVideoDelegate?
     fileprivate var timeObserver:Any?
     fileprivate var isPaused = true
     fileprivate var mediaPlayer: MediaPlayer?
     fileprivate var url:URL!
+    fileprivate var objectId: NSManagedObjectID!
     
     fileprivate var summary = "" {
         didSet{
@@ -54,11 +59,12 @@ class VideoTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func configureCell(withURL videoURL:URL,thumbnail:URL, description summary:String) {
+    func configureCell(withURL videoURL:URL,thumbnail:URL, description summary:String, id: NSManagedObjectID) {
         url = videoURL
         thumbnailImage.kf.setImage(with: thumbnail)
         self.summary = summary
         summaryLabel.collapseLabel(with: summary)
+        self.objectId = id
     }
     
     @objc func initializePlayer(sender: UITapGestureRecognizer) {
@@ -103,4 +109,9 @@ class VideoTableViewCell: UITableViewCell {
         }
         
     }
+    
+    @IBAction func setFavourite(_ sender: FaveButton) {
+        DataManager.shared.updateObject(with: self.objectId, favourite: sender.isSelected)
+    }
+    
 }
