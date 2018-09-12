@@ -12,6 +12,7 @@ import CoreData
 
 enum DownloadStatus: String,Codable {
     case Completed
+    case InProgress
     case Paused
     case NotDownloaded
 }
@@ -41,11 +42,18 @@ struct VideoViewModel {
     var isFavourite: Bool {
         return video.favourite
     }
-    var objectId: NSManagedObjectID {
-        return video.objectID
-    }
+    
     init(with video: Media) {
         self.video = video
+    }
+    
+    func markVideoAsFavourite(flag: Bool) {
+        DataManager.shared.updateObject(with: video.objectID, favourite: flag)
+    }
+    
+    mutating func downloadVideo() {
+        status = .InProgress
+        DataManager.shared.download(Url: url)
     }
 }
 

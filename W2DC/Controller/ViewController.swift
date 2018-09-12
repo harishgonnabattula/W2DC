@@ -68,7 +68,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             cell.summaryLabel.lineBreakMode = .byTruncatingTail
         }
         
-        cell.configureCell(withURL: dataSource[indexPath.row].url, thumbnail: dataSource[indexPath.row].videoThumbnail, description: dataSource[indexPath.row].summary, id: dataSource[indexPath.row].objectId)
+        cell.configureCell(with: dataSource[indexPath.row])
         cell.favouriteButton.isSelected = dataSource[indexPath.row].isFavourite
         cell.contentView.setCardView(view: cell.thumbnailImage)
         

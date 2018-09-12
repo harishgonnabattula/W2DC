@@ -80,4 +80,8 @@ class DataManager {
             print("Didnt save")
         }
     }
+    
+    func download(Url: URL) {
+        
+    }
 }

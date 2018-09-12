@@ -22,14 +22,11 @@ class VideoTableViewCell: UITableViewCell {
     @IBOutlet weak var thumbnailImage: UIImageView!
     @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    
     weak var fullScreenDelegate:FullScreenVideoDelegate?
     fileprivate var timeObserver:Any?
     fileprivate var isPaused = true
     fileprivate var mediaPlayer: MediaPlayer?
-    fileprivate var url:URL!
-    fileprivate var objectId: NSManagedObjectID!
-    
+    fileprivate var mediaModel:VideoViewModel!
     fileprivate var summary = "" {
         didSet{
             guard let summaryLabl = summaryLabel else{
@@ -59,17 +56,16 @@ class VideoTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func configureCell(withURL videoURL:URL,thumbnail:URL, description summary:String, id: NSManagedObjectID) {
-        url = videoURL
-        thumbnailImage.kf.setImage(with: thumbnail)
-        self.summary = summary
+    func configureCell(with mediaModel: VideoViewModel) {
+        self.mediaModel = mediaModel
+        thumbnailImage.kf.setImage(with: mediaModel.videoThumbnail)
+        self.summary = mediaModel.summary
         summaryLabel.collapseLabel(with: summary)
-        self.objectId = id
     }
     
     @objc func initializePlayer(sender: UITapGestureRecognizer) {
         if mediaPlayer == nil {
-            mediaPlayer = MediaPlayer(mediaUrl: self.url)
+            mediaPlayer = MediaPlayer(mediaUrl: self.mediaModel.url)
         }
         addPlayer()
     }
@@ -111,7 +107,11 @@ class VideoTableViewCell: UITableViewCell {
     }
     
     @IBAction func setFavourite(_ sender: FaveButton) {
-        DataManager.shared.updateObject(with: self.objectId, favourite: sender.isSelected)
+        mediaModel.markVideoAsFavourite(flag: sender.isSelected)
+    }
+    
+    @IBAction func downloadThisVideo() {
+        mediaModel.downloadVideo()
     }
     
 }
