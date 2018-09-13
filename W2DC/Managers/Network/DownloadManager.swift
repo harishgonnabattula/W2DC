@@ -8,13 +8,21 @@
 
 import Foundation
 
-struct DownloadManager {
+class DownloadManager {
+    
+    private init() {}
+    static let shared = DownloadManager()
     lazy var pendingDownloads = [IndexPath:Operation]()
     lazy var downloadQueue: OperationQueue = {
         var queue = OperationQueue()
+        queue.maxConcurrentOperationCount = 1
+        queue.qualityOfService = .background
         queue.name = "Video Download Queue"
         return queue
     }()
-    func startDownload(item video:VideoViewModel) {
+    
+    func startDownload(item operation:DownloadOperation) {
+        downloadQueue.addOperation(operation)
+        
     }
 }

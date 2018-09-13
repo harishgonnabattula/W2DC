@@ -27,6 +27,7 @@
 		BCDF063F2146EBAB0024BA95 /* MediaPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDF063E2146EBAB0024BA95 /* MediaPlayer.swift */; };
 		BCDF0641214702EC0024BA95 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDF0640214702EC0024BA95 /* Extensions.swift */; };
 		BCF1BF392149C368007F7BBE /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF1BF382149C368007F7BBE /* DataManager.swift */; };
+		BCFC6F5E2149DB4E0046C1DD /* DownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFC6F5D2149DB4E0046C1DD /* DownloadOperation.swift */; };
 		EF114E8ED8C09594BB2ECDB6 /* Pods_W2DC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C788D1C94889A53C4376528 /* Pods_W2DC.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		BCDF063E2146EBAB0024BA95 /* MediaPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPlayer.swift; sourceTree = "<group>"; };
 		BCDF0640214702EC0024BA95 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BCF1BF382149C368007F7BBE /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		BCFC6F5D2149DB4E0046C1DD /* DownloadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				BCC2E26C214126D8003687DE /* DownloadManager.swift */,
+				BCFC6F5D2149DB4E0046C1DD /* DownloadOperation.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				BCC2E26F214130F0003687DE /* VideoTableViewCell.swift in Sources */,
 				BC69209F2131C69100DDDB03 /* VideoModel.swift in Sources */,
 				BCADCFF321478FC4000C2AB0 /* Media+CoreDataProperties.swift in Sources */,
+				BCFC6F5E2149DB4E0046C1DD /* DownloadOperation.swift in Sources */,
 				BCC2E26D214126D8003687DE /* DownloadManager.swift in Sources */,
 				BCADCFF421478FC4000C2AB0 /* Media+CoreDataClass.swift in Sources */,
 				BCDF0641214702EC0024BA95 /* Extensions.swift in Sources */,

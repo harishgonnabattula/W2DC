@@ -37,8 +37,6 @@ class ViewController: UIViewController {
         searchController.dimsBackgroundDuringPresentation = true
         searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = "Ex: Core Data"
-        searchController.searchBar.selectedScopeButtonIndex = -1
-        searchController.searchBar.scopeButtonTitles = ["Favourite","Downloaded"]
         searchController.searchBar.tintColor = UIColor(hexString: "#F67280")
         searchController.hidesNavigationBarDuringPresentation = false
         navigationItem.searchController = searchController

@@ -14,7 +14,7 @@ class DataManager {
     static let shared = DataManager()
     
     private init() {}
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.newBackgroundContext()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     fileprivate let fetchResultsController = (UIApplication.shared.delegate as! AppDelegate).fetchedResultsController
     
     weak var videoTableViewController: ViewController? {
@@ -70,18 +70,14 @@ class DataManager {
         }
     }
     
-    func updateObject(with ID: NSManagedObjectID, favourite:Bool) {
+    func updateObject(with ID: NSManagedObjectID, using key:String,and value:Any?) {
         let object = context.object(with: ID) as! Media
-        object.favourite = favourite
+        object.setValue(value, forKey: key)
         do {
             try context.save()
         }
         catch _ {
             print("Didnt save")
         }
-    }
-    
-    func download(Url: URL) {
-        
     }
 }
