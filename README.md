@@ -8,3 +8,5 @@ Doesnt make the tableview scrolling lag.
 Made the player initialization lazy and hence the performance is good.
 Added a search bar to search the videos and play. Linked the Tableview with NSFetchedResultsController for easy fetching of the data from CoreData.
 Added OperationQueue for downloading the videos. The Operations execute serially.
+
+![Alt text](https://media.giphy.com/media/iDMeAzvd7X0BxWNyHk/giphy.gif "Screenshots")
